@@ -47,7 +47,8 @@ const EmojiBoard = ({
     categoryIconSize = 20,
     containerStyle = {},
     tabBarStyle = {},
-    labelStyle = {}
+    labelStyle = {},
+    emojiTouchableStyle = {}
 }) => {
     // emoji board height only for android
     const containerHeight = numCols * 40 + 40 + 40;
@@ -99,6 +100,7 @@ const EmojiBoard = ({
                 key={name}
                 tabLabel={name}
                 labelStyle={labelStyle}
+                emojiTouchableStyle={emojiTouchableStyle}
                 onClick={onClick}
             />
         );
@@ -170,7 +172,8 @@ EmojiBoard.propTypes = {
     categoryIconSize: PropTypes.number,
     containerStyle: PropTypes.object,
     tabBarStyle: PropTypes.object,
-    labelStyle: PropTypes.object
+    labelStyle: PropTypes.object,
+    emojiStyle: PropTypes.object
 };
 
 export default EmojiBoard;

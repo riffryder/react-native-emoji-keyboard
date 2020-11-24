@@ -22,12 +22,13 @@ const EmojiIcon = ({
     clickEmoji,
     longPressEmoji,
     emojiWidth,
-    emojiSize
+    emojiSize,
+    emojiTouchableStyle
 }) => {
     const {code, img} = emoji;
     return (
         <TouchableOpacity
-            style={[styles.emojiTouch, {width: emojiWidth}]}
+            style={[styles.emojiTouch, emojiTouchableStyle, {width: emojiWidth}]}
             onLongPress={() => (longPressEmoji ? longPressEmoji(emoji) : null)}
             onPress={() => clickEmoji(emoji)}>
             {code ?
@@ -43,6 +44,7 @@ EmojiIcon.propTypes = {
     clickEmoji: PropTypes.func,
     longPressEmoji: PropTypes.func,
     emojiWidth: PropTypes.number,
-    emojiSize: PropTypes.number
+    emojiSize: PropTypes.number,
+    emojiTouchableStyle: PropTypes.object
 };
 export default EmojiIcon;

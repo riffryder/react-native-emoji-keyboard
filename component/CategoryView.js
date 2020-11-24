@@ -37,6 +37,7 @@ const CategoryView = ({
     numCols,
     emojiSize,
     labelStyle,
+    emojiTouchableStyle,
     onClick
 }) => {
     const [toggleSkinBox, setToggleSkinBox] = useState({
@@ -99,6 +100,8 @@ const CategoryView = ({
                                 longPressEmoji={longPressEmoji}
                                 emojiWidth={emojiWidth}
                                 emojiSize={emojiSize}
+                                emojiTouchableStyle={emojiTouchableStyle}
+
                             />
                         );
                     })}
@@ -115,6 +118,7 @@ const CategoryView = ({
                     clickEmoji={clickEmoji}
                     emojiWidth={emojiWidth}
                     emojiSize={emojiSize}
+                    emojiTouchableStyle={emojiTouchableStyle}
                 />
             )}
             <ScrollableTabView
