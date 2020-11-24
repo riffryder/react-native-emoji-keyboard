@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {Animated, StyleSheet, Dimensions} from 'react-native';
+import {TouchableOpacity, View, Animated, StyleSheet, Dimensions} from 'react-native';
 import emojiSource from 'emoji-datasource';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import MaIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
     isIphoneXorAbove,
     isAndroid,
@@ -27,6 +28,14 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         paddingBottom: isIphoneXorAbove() ? 15 : 0
+    },
+    topHeaderContainer: {
+        height: 56,
+        justifyContent: 'center',
+        alignItems: 'flex-end',
+        paddingRight: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: 'rgba(47, 49, 51, 0.1)'
     }
 });
 
@@ -40,6 +49,7 @@ const EmojiBoard = ({
     emojiSize = 24,
     onClick,
     onRemove,
+    onClose,
     tabBarPosition = 'bottom',
     hideBackSpace = false,
     categoryDefautColor = '#aaa',
@@ -51,7 +61,7 @@ const EmojiBoard = ({
     emojiTouchableStyle = {}
 }) => {
     // emoji board height only for android
-    const containerHeight = numCols * 40 + 40 + 40;
+    const containerHeight = numCols * 40 + 40 + 40 + 56;
     const animationOffset = containerHeight + 100;
 
     const [emojiData, setEmojiData] = useState(null);
@@ -116,6 +126,15 @@ const EmojiBoard = ({
                 },
                 containerStyle
             ]}>
+            <View style={topHeaderContainer}>
+                <TouchableOpacity onPress={onClose}>
+                    <MaIcon
+                        name={'close'}
+                        size={24}
+                        color={'#000'}
+                    />
+                </TouchableOpacity>
+            </View>
             <ScrollableTabView
                 tabBarPosition={tabBarPosition}
                 renderTabBar={() => (
@@ -165,6 +184,7 @@ EmojiBoard.propTypes = {
     emojiSize: PropTypes.number,
     onClick: PropTypes.func.isRequired,
     onRemove: PropTypes.func,
+    onClose: PropTypes.func.isRequired,
     tabBarPosition: PropTypes.string,
     hideBackSpace: PropTypes.bool,
     categoryDefautColor: PropTypes.string,
