@@ -126,7 +126,7 @@ const EmojiBoard = ({
                 },
                 containerStyle
             ]}>
-            <View style={topHeaderContainer}>
+            <View style={styles.topHeaderContainer}>
                 <TouchableOpacity onPress={onClose}>
                     <MaIcon
                         name={'close'}
