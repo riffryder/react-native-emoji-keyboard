@@ -28,7 +28,7 @@ const EmojiIcon = ({
     const {code, img} = emoji;
     return (
         <TouchableOpacity
-            style={[styles.emojiTouch, emojiTouchableStyle, {width: emojiWidth}]}
+            style={[emojiTouchableStyle ? emojiTouchableStyle : styles.emojiTouch, {width: emojiWidth}]}
             onLongPress={() => (longPressEmoji ? longPressEmoji(emoji) : null)}
             onPress={() => clickEmoji(emoji)}>
             {code ?
